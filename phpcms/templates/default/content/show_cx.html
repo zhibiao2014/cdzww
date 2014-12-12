@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+  <meta name="keywords" content="{$SEO['keyword']}"/>
+  <meta name="description" content="{$SEO['description']}"/>
+  <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+  <link href="{CSS_PATH}all.css" rel="stylesheet" type="text/css" />
+  <link href="{CSS_PATH}jquery.simplyscroll.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+</head>
+<body>
+  {template "content","header_common"}
+  <div class="w1000 t10 clearfix">
+    <!--left-->
+    <div class="w210 left">
+      <p class="title_blue">信息公开</p>
+      <ul class="list_zwgk">
+       {pc:content  action="category" siteid="$siteid" catid="11" num="10"}
+       {loop $data $r}
+       <li><a href="{$r[url]}">{$r[catname]}</a></li>
+       {/loop}
+       {/pc}
+     </ul>
+   </div>
+   <!--left end-->
+   <!--right-->
+   <div class="right w770">
+    <div class="detail_title">
+      <p>{$title}</p>
+    </div>
+    <div class="detail">
+      <table cellpadding="10" cellspacing="0" border="1" bordercolor="#CC9900" class="company_table">
+        <tr>
+          <td class="td1">公司名称：</td>
+          <td class="td2">{$name}</td>
+          <td class="td3">联系电话：</td>
+          <td class="td4">{$phone}</td>
+        </tr>
+        <tr>
+          <td class="td1">公司地址：</td>
+          <td class="td2" colspan="3">{$address}</td>
+
+        </tr>
+        <tr>
+          <td class="td1">法人代表：</td>
+          <td class="td2">{$low}</td>
+          <td class="td3">等级资质：</td>
+          <td class="td4">{$class}</td>
+        </tr>
+        <tr>
+          <td class="td1">资质编号：</td>
+          <td class="td2">{$number}</td>
+          <td class="td3">注册资金：</td>
+          <td class="td4">{$money}</td>
+        </tr>
+        <tr>
+          <td class="td1">公司类型：</td>
+          <td class="td2">{$type}</td>
+          <td class="td3">营业执照：</td>
+          <td class="td4">{$pass}</td>
+        </tr>
+        <tr>
+          <td class="td1">成立日期 ：</td>
+          <td class="td2">{$cltime}</td>
+          <td class="td3">批准从事房地产业时间：</td>
+          <td class="td4">{$pztime}</td>
+        </tr>
+        <tr>
+          <td class="td1">资质有效期：</td>
+          <td class="td2" colspan="3">{$effectivedate}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!--right end-->
+</div>
+{template "content","footer-common"}

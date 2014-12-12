@@ -1,0 +1,54 @@
+<!--logo-->
+<div class="logo clearfix w1000">
+	<a href="{siteurl($siteid)}"><img src="{IMG_PATH}img/logo.jpg" width="230" height="76" /></a>
+	{pc:content  action="category" siteid="$siteid" catid="57" num="5" order="id ESC"}
+  <p>
+	{loop $data $r}
+	{if $n != 1 } ·&nbsp;{/if}<a href="{$r[url]}">{$r[catname]}</a>
+  {/loop}
+  </p>
+  {/pc}
+</div>
+<!--logo end-->
+<!--nav-->
+<div class="nav">
+	<div class="w1000">
+      {pc:content  action="category" siteid="$siteid" catid="205" num="5"}
+   	  <ul class="left">
+        	{loop $data $r}
+        	<li><a href="{$r[url]}">{$r[catname]}</a></li>
+        	{/loop}
+      </ul>
+      {/pc}
+      <ul class="right black000">
+     {pc:content  action="category" siteid="$siteid" catid="207" num="5"}
+        	{loop $data $r}
+        	<li><a href="{$r[url]}">{$r[catname]}</a></li>
+        	{/loop}
+      </ul>
+      {/pc}
+  </div>
+</div>
+<!--nav end-->
+
+<!--nav-->
+<div class="nav1">
+				{pc:content  action="category" siteid="$siteid" catid="20" num="25"}
+        <ul>
+            <li class="block1">&nbsp;</li>
+            <li>房管局科室：</li>
+            {loop $data $r}
+            {if $n !=1 }
+            <li>|</li>
+            {/if}
+            <li><a href="{$r[url]}">{$r[catname]}</a></li>
+            {/loop}
+        </ul>
+        {/pc}
+</div>
+<!--nav1 end-->
+<!--show_img-->
+<div class="w1000">
+<img src="{IMG_PATH}img/show.jpg" width="1000" height="260" /> 
+</div>
+<!--show_img end-->

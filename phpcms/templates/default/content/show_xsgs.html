@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+  <meta name="keywords" content="{$SEO['keyword']}"/>
+  <meta name="description" content="{$SEO['description']}"/>
+  <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+  <link href="{CSS_PATH}all.css" rel="stylesheet" type="text/css" />
+  <link href="{CSS_PATH}jquery.simplyscroll.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+</head>
+<body>
+  {template "content","header_common"}
+  <div class="w1000 t10 clearfix">
+    <!--left-->
+    <div class="w210 left">
+   <p class="title_blue">现预售公示</p>
+      <ul class="list_zwgk">
+        {pc:content  action="category" siteid="$siteid" catid="219" num="10"}
+        {loop $data $r}
+        <li><a href="{$r[url]}">{$r[catname]}</a></li>
+        {/loop}
+        {/pc}
+      </ul>
+      {/pc}
+      <p class="title_blue">信息公开</p>
+      <ul class="list_zwgk">
+       {pc:content  action="category" siteid="$siteid" catid="11" num="10"}
+       {loop $data $r}
+       <li><a href="{$r[url]}">{$r[catname]}</a></li>
+       {/loop}
+       {/pc}
+     </ul>
+   </div>
+   <!--left end-->
+   <!--right-->
+   <div class="right w770">
+    <div class="detail_title">
+      <p>{$title}</p>
+    </div>
+    <div class="detail">
+        <table cellpadding="10" cellspacing="0" border="1" bordercolor="#CC9900" class="presale_table">
+        <tr>
+            <td width="15%">编号：</td>
+              <td width="35%">{$num}</td>
+              <td width="23%">发证日期：</td>
+              <td width="27%">{$date}</td>
+          </tr>
+        <tr>
+            <td width="15%">预售项目：</td>
+              <td width="35%">{$name}</td>
+              <td width="23%">建设用地规划许可证：</td>
+              <td width="27%"></td>
+          </tr>
+        <tr>
+            <td>项目座落：</td>
+              <td>{$address}</td>
+              <td>建设工程规划许可证：</td>
+              <td></td>
+          </tr>
+        <tr>
+            <td>建筑面积：</td>
+              <td colspan="3">{$mianji}</td>
+
+          </tr>
+        <tr>
+            <td>房屋套数：</td>
+              <td colspan="3">{$number}</td>
+
+          </tr>
+        <tr>
+            <td>项目结构：</td>
+              <td>{$xmjiegou}</td>
+              <td>土地使用权证：</td>
+              <td></td>
+          </tr>
+        <tr>
+            <td>项目栋数：</td>
+              <td>{$xmnum}</td>
+              <td>施工许可证：</td>
+              <td></td>
+          </tr>
+        <tr>
+            <td>工程总投资：</td>
+              <td></td>
+              <td>工程形象进度：</td>
+              <td></td>
+          </tr>
+        <tr>
+            <td>开工日期：</td>
+              <td>{$startdate}</td>
+              <td>竣工交付日期：</td>
+              <td>{$overdate}</td>
+          </tr>
+        <tr>
+            <td>开发商信息：</td>
+              <td>{$information}</td>
+              <td>销售代理公司：</td>
+              <td>{$dailigs}</td>
+          </tr>
+          <tr><td colspan="4">预售许可证扫描件</td></tr>
+          <?php if( is_array($shaomiao)) : foreach ($shaomiao as $key => $value) { ?>
+          <tr>
+            <td colspan="4" align="center"><img src="{$value['url']}" width="650" alt="{$value['alt']}" /></td>
+          </tr>
+        <?php } endif; ?>
+      </table>
+    </div>
+  </div>
+  <!--right end-->
+</div>
+{template "content","footer-common"}

@@ -1,0 +1,353 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=7" />
+      <meta name="keywords" content="{$SEO['keyword']}"/>
+      <meta name="description" content="{$SEO['description']}"/>
+      <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+      <link href="{CSS_PATH}all.css" rel="stylesheet" type="text/css" />
+      <link href="{CSS_PATH}jquery.simplyscroll.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+      {template "content","header_common"}
+      <!--信息公开整块-->
+      <div class="w1000 t10 clearfix">
+        <!--left-->
+        <div class="w210 left">
+          <p class="title_blue">信息公开</p>
+          <ul class="list_zwgk">
+            {pc:content  action="category" siteid="$siteid" catid="11" num="6"}
+            {loop $data $r}
+            <li><a href="{$r[url]}">{$r[catname]}</a></li>
+            {/loop}
+            {/pc}    
+          </ul>
+
+          <p class="title_blue t10">组织机构</p>
+          <ul class="list_xxgk">
+            {pc:content  action="category" siteid="$siteid" catid="43" num="6"}
+            {loop $data $r}
+            <li><a href="{$r[url]}">{$r[catname]}</a></li>
+            {/loop}
+            {/pc} 
+          </ul>
+
+        </div>
+        <!--left end-->
+        <!--news-->
+        <div class="left l20 w490" style="position: relative;">
+          <ul class="news clearfix">
+            <li>
+              <img src="{IMG_PATH}img/zw_icon1.jpg" width="46" height="40" />
+              <a href="{$CATEGORYS[12]['url']}">政策法规</a>
+            </li>
+            <li>
+              <img src="{IMG_PATH}img/zw_icon2.jpg" width="46" height="40" />
+              <a href="{$CATEGORYS[13]['url']}">公示公告</a>
+            </li>
+            <li>
+              <img src="{IMG_PATH}img/zw_icon3.jpg" width="46" height="40" />
+              <a href="{$CATEGORYS[87]['url']}">工作动态</a>
+            </li>
+            <li>
+              <img src="{IMG_PATH}img/zw_icon4.jpg" width="46" height="40" />
+              <a href="{$CATEGORYS[88]['url']}">机关建设</a>
+            </li>
+          </ul>
+
+          <div class="scroll_img">
+            {pc:content  action="position" posid="12" thumb="1" order="id DESC" num="4"} 
+            <ul class="photo">
+              {loop $data $k $v}
+              <li>
+                <a href="{$v[url]}" title="{$v[title]}" target="_blank">
+                  <img class="news_img" src="{thumb($v[thumb], 348, 232)}" width="348" height="232" alt="{$v[title]}" />
+                </a>
+              </li>
+              {/loop}
+            </ul>
+            {/pc}
+          </div>
+          {pc:content  action="lists" catid="118" order="id ASC" num="7"} 
+          <ul class="newslist left clear_right">
+
+            <li class="height10"></li>
+            {loop $data $v}
+            {if $n == 1}	
+            <li class="height30"><a href="{$v['url']}">{$v[title]}</a></li>
+            {else} 
+            <li><a href="{$v['url']}">{$v[title]}</a></li>
+            {/if}
+            {/loop}
+          </ul> 
+          {/pc}   
+          {pc:content  action="lists" catid="129" order="id ASC" num="7"}    
+          <ul class="newslist l20 left">
+            <li class="height10"></li>
+            {loop $data $v}
+            {if $n == 1}    
+            <li class="height30"><a href="{$v['url']}">{$v[title]}</a></li>
+            {else}            	
+            <li><a href="{$v['url']}">{$v[title]}</a></li>
+            {/if}
+            {/loop}
+          </ul>
+          {/pc}
+        </div>
+        <!--news end-->
+        <!--notice-->
+        <div class="w260 right">
+          {pc:content action="position" posid="22" order="id DESC" num="6"}      
+          <ul class="notice">                 
+            <li class="title"><span class="span_title">通知</span><a href="{$CATEGORYS[13]['url']}" class="more">更多&gt;</a></li>
+            {loop $data $v}
+            <li class="list"><a href="{$v['url']}">{$v[title]}</a></li>
+            {/loop}
+            <ul>
+              {/pc}
+              {pc:content action="position" posid="24" order="id DESC" num="6"}
+              <ul class="notice">
+                <li class="black"> </li>        
+                <li class="title">公告<a href="{$CATEGORYS[86]['url']}" class="more">更多&gt;</a></li>
+                {loop $data $v}
+                <li class="list"><a href="{$v['url']}">{$v[title]}</a></li>
+                {/loop}
+              </ul>    
+              {/pc}       
+            </div>
+            <!--notice end-->
+          </div>
+          <!--信息公开整块end-->
+          <!--pre_sele-->
+          <div class="w1000 t20 clearfix">
+            <style type="text/css">
+              #tabs {
+                position: relative;
+              }
+              #tabs ul li {
+                float: left;
+              }
+              #tabs a.more{
+                position: absolute;
+                top: 10px;
+                left: 670px;
+                display: block;
+              }
+              .ui-tabs-active a.a2 {
+                display: inline-block;
+                background-color: #FFF;
+                width: 120px;
+                text-align: center;
+                float: left;
+                height: 25px;
+                margin-top: 5px;
+                line-height: 25px;
+                color: #003f98;
+                text-decoration: none;
+              }
+            </style>
+            <div id="tabs" class="left w720">
+              <ul class="pre_sale_title">
+                <li><a href="#tabs-1" class="a2">{$CATEGORYS[202][catname]}</a></li>
+                <li><a href="#tabs-2" class="a2">{$CATEGORYS[203][catname]}</a></li>
+              </ul>
+              <div id="tabs-1">
+
+                <a href="#" class="more">更多&gt;</a>
+                {pc:content action="lists" catid="202" order="id DESC" num="6"}
+                <ul class="pre_sale">
+                  {loop $data $r}
+                  <li>
+                    <span class="span1">{$r[num]}</span>
+                    <a href="{$r[url]}"><span class="span2">{$r[name]}</span></a>
+                    <span class="span3">{$r[address]}</span>
+                    <span class="span4">{$r[date]}</span>
+                  </li>
+                  {/loop}
+                </ul>
+                {/pc}
+              </div>
+
+              <div id="tabs-2">
+                <a href="#" class="more">更多&gt;</a>
+                {pc:content action="lists" catid="203" order="id DESC" num="6"}
+                <ul class="pre_sale">
+                  {loop $data $r}
+                  <li>
+                    <span class="span1">{$r[num]}</span>
+                    <a href="{$r[url]}"><span class="span2">{$r[name]}</span></a>
+                    <span class="span3">{$r[address]}</span>
+                    <span class="span4">{$r[date]}</span>
+                  </li>
+                  {/loop}
+                </ul>
+                {/pc}
+              </div>
+            </div>
+            <!--download-->
+            <div class="right w260">
+              {pc:content  action="position" posid="25" order="id DESC" num="6"}
+              <ul class="notice">
+                <li class="title">表格下载</li>
+                {loop $data $r}
+                <li class="list"><a href="{$r[url]}">· {$r[title]}</a></li>
+                {/loop}
+              </ul>
+              {/pc}
+            </div>
+            <!--download end-->
+          </div>
+          <!--pre_sele end-->
+          <div class="w1000 t5">
+            <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=11"></script>
+          </div>
+          <!--房地产企业查询-->
+          <div class="company_title t5">
+            <p>房地产企业查询</p>
+            {pc:content action="category" catid="197" order="id DESC" nmber="4"}
+            <ul>
+              {loop $data $r} 
+              {if $n!=1}
+              <li>|</li>
+              {/if}
+              <li><a href="{$r[url]}">{$r[catname]}</a></li>
+              {/loop}
+              <li class="more"><a href="{$CATEGORYS[197]['url']}">更多&gt;</a></li>
+            </ul>
+            {/pc}
+          </div>
+          {pc:content action="position" posid="28" order="id DESC" num="5"}    
+          <ul class="company w1000">
+            {loop $data $r}
+            {if $n==5}
+            <li class="li1">
+              {else}
+              <li>
+                {/if}
+
+                <a href="{$r['url']}" class="text1">{$r[name]}</a>
+                <a href="{$r['url']}" class="text2">{$r[address]}</a>
+                <a href="{$r['url']}" class="text3">{$r[number]}</a>
+                <a href="{$r['url']}" class="text4">{$r[effectivedate]}</a>
+              </li>
+              {/loop}
+            </ul>
+            {/pc}
+            <!--房地产企业查询 end-->
+            <!--service-->
+            <div class="w1000 t20 clearfix">
+              <div class="service_title">
+                <img src="{IMG_PATH}img/service_icon.jpg" width="17" height="43" />
+                网上办事大厅
+                <a href="{$CATEGORYS[20]['url']}">更多&gt;</a>
+                {pc:content action="category" catid="20" siteid="$siteid" num="4"}
+                <ul>
+                  {loop $data $r}
+                  {if $n!=1}
+                  <li>·</li>
+                  {/if}
+                  <li><a href="{$r[url]}">{$r[catname]}</a></li>
+                  {/loop}
+                </ul>
+                {/pc}
+              </div>
+              {pc:content action="position" posid="23" order="id DESC" num="12"}
+              <ul class="service">
+                {loop $data $r}
+                {if $n%4==0}
+                <li class="mar0"><a href="{$r[url]}">{$r[title]}</a></li>
+                {else}
+                <li><a href="{$r[url]}">{$r[title]}</a></li>
+                {/if}
+                {/loop}
+              </ul>
+              {/pc}
+            </div>
+            <!--service end-->
+            <!--laws-->
+            <div class="w1000 t20 clearfix">
+              <div class="service_title">
+                <img src="{IMG_PATH}img/laws_icon.jpg" width="17" height="43" />
+                政策法规
+                <a href="{$CATEGORYS[12]['url']}">更多&gt;</a>
+                {pc:content action="category" siteid="$siteid" catid="12" num="4"}
+                <ul>
+                  {loop $data $r}
+                  {if $n!=1}
+                  <li>·</li>
+                  {/if}
+                  <li><a href="{$r[url]}">{$r[catname]}</a></li>
+                  {/loop}
+                </ul>
+                {/pc}
+              </div>
+              {pc:content action="position" siteid="$siteid" posid="27" num="8"}
+              <ul class="laws">
+                {loop $data $r}
+                {if $n%2==0}
+                <li>
+                  {else}
+                  <li class="li1">
+                    {/if}
+                    <a href="{$r[url]}">{$r[title]}</a></li>
+                    {/loop}
+        <!--
+        <li class="li1 li2"><a href="#">住房城乡建设部关于进一步规范房地产估价机构管理工作的通知</a></li>
+        <li class="li2"><a href="#">关于印发《常德市房地产管理局关于提高房产项目建设品质的指导意见》的通知</a></li>-->
+      </ul>
+      {/pc}
+
+    </div>
+    <!--laws end-->
+    <div class="w1000 t5"><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=12"></script></div>
+    <div class="w1000 t5"><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=13"></script></div>
+   
+
+    <div class="w1000 t5">
+      <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=14"></script>
+    </div>
+    <!--cr-->
+    <div id="links" class="clear">
+      <p>
+        {pc:link  action="type_list" typeid="60" siteid="1" linktype="0" order="listorder DESC" num="100" return="links"}
+        {loop $links $link}
+        <a href="{$link['url']}" target="_blank">{$link['name']}</a> |
+        {/loop}
+        {/pc}
+      </p>
+    </div>
+    {template "content","footer-common"}
+    <script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
+    <script type="text/javascript" src="{JS_PATH}jquery.sgallery.js"></script>
+    <script type="text/javascript" src="{JS_PATH}search_common.js"></script>
+    <script type="text/javascript" src="{JS_PATH}jquery.simplyscroll.min.js"></script>
+    <script type="text/javascript" src="{JS_PATH}jquery.slides.js"></script>
+    <script type="text/javascript" src="{JS_PATH}jquery-ui.js"></script>
+    <script type="text/javascript">
+      function ChannelSlide(Name,Class){
+        $('.scroll_img ul.photo li').sGallery({
+          thumbNowClass: Class });
+      }
+
+      $(function(){
+        $( "#tabs" ).tabs({event: 'mouseover'});
+        $('#slides').slides({
+          preload: true,
+          generateNextPrev: true
+        });
+        new ChannelSlide(".scroll_img","on",311,260);
+
+        $("#scroller").simplyScroll();
+        $("#city_tuijie_tu").simplyScroll({customClass : ""});
+    /*$(".picbig").each(function(i){
+    var cur = $(this).find('.img-wrap').eq(0);
+    var w = cur.width();
+    var h = cur.height();
+    $(this).find('.img-wrap img').LoadImage(true, w, h,'{IMG_PATH}msg_img/loading.gif');
+  });*/
+    });
+    </script>
+  </body>
+  </html>
